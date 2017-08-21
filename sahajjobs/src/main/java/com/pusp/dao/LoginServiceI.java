@@ -1,10 +1,11 @@
 package com.pusp.dao;
 
+import com.pusp.dto.LoginRequest;
 import com.pusp.dto.PersistUserDto;
+import com.pusp.dto.SignUpRequestDto;
 
 public interface LoginServiceI {
-	public boolean validateUser(String uname, String pass)throws Exception;
-	public PersistUserDto saveUser(String fName,String lName,String pass,String email,long mobileNo,
-			String loc,int totalExp,String skills,String indudtry,String filePath)throws Exception;
+	public boolean validateUser(LoginRequest request)throws Exception;
+	public PersistUserDto saveUser(SignUpRequestDto request)throws Exception;
 }
 

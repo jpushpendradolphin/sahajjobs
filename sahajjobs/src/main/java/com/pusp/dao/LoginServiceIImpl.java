@@ -12,7 +12,9 @@ import java.sql.Statement;
 import org.apache.log4j.Logger;
 
 import com.pusp.db.LogginConnection;
+import com.pusp.dto.LoginRequest;
 import com.pusp.dto.PersistUserDto;
+import com.pusp.dto.SignUpRequestDto;
 
 public class LoginServiceIImpl implements LoginServiceI {
 	final static Logger logger = Logger.getLogger(LoginServiceIImpl.class);
@@ -22,26 +24,25 @@ public class LoginServiceIImpl implements LoginServiceI {
 	public LoginServiceIImpl() throws Exception{
 		loginConn = new LogginConnection();
 	}
-	public boolean validateUser(String uname, String pass) throws Exception{
-		logger.debug("user :"+uname +" password : "+pass);
+	public boolean validateUser(LoginRequest request) throws Exception{
+		logger.debug("user :"+request.getUser() +" password : "+request.getPassword());
 		boolean response = false;
-		response = getLoginStatus(uname,pass);
+		response = getLoginStatus(request);
 		return response;
 		
 	}
 	
-	public PersistUserDto saveUser(String fName, String lName, String pass, String email, long mobileNo, String loc,
-			int totalExp, String skills, String indudtry, String filePath)throws Exception {
-		PersistUserDto persistUserDto = persistUser( fName,  lName, pass, email, mobileNo, loc, totalExp, skills, indudtry, filePath);
+	public PersistUserDto saveUser(SignUpRequestDto request)throws Exception {
+		PersistUserDto persistUserDto = persistUser(request);
 		return persistUserDto;
 	}
 	
-	private boolean getLoginStatus(String uname, String pass) throws SQLException{
+	private boolean getLoginStatus(LoginRequest request) throws SQLException{
 		boolean msg = false;
 		conn  = LogginConnection.getLoginConnection();
 		PreparedStatement ps = conn.prepareStatement(query);
-		ps.setString(1, uname);
-		ps.setString(2, pass);
+		ps.setString(1, request.getUser());
+		ps.setString(2, request.getPassword());
 		ResultSet rs = ps.executeQuery();
 		if(rs.next())
 			msg = true;
@@ -49,31 +50,30 @@ public class LoginServiceIImpl implements LoginServiceI {
 	}
 	
 	
-	private PersistUserDto persistUser(String fName, String lName, String pass, String email, long mobileNo, String loc,
-			int totalExp, String skills, String indudtry, String filePath)throws Exception {
+	private PersistUserDto persistUser(SignUpRequestDto request)throws Exception {
 		conn = LogginConnection.getLoginConnection();
 		PersistUserDto dto = new PersistUserDto();
 		DatabaseMetaData md = conn.getMetaData();
-		String tableName = fName+""+lName;
+		String tableName = request.getfName()+""+request.getlName();
 			int returnCode = -1;
 			String query = "create table "+ tableName+"(fName varchar2(30), lName varchar2(30), pass varchar2(30), email varchar2(30),mob number(10), loc varchar2(30),t_Exp number(2),skills varchar2(30),industry varchar2(30),resume clob)";
 			try{
 				
-				File f = new File(filePath);  
+				File f = new File(request.getFilePath());  
 				FileReader fr = new FileReader(f);
 				Statement st = conn.createStatement();
 				returnCode = st.executeUpdate(query);
 				logger.info("returncode "+returnCode);
 				PreparedStatement ps = conn.prepareStatement("");
-				ps.setString(1, fName);
-				ps.setString(2, lName);
-				ps.setString(3, pass);
-				ps.setString(4, email);
-				ps.setLong(5, mobileNo);
-				ps.setString(6, loc);
-				ps.setInt(7, 3);
-				ps.setString(8, "");
-				ps.setString(9, "");
+				ps.setString(1, request.getfName());
+				ps.setString(2, request.getlName());
+				ps.setString(3, request.getPass());
+				ps.setString(4, request.getEmail());
+				ps.setLong(5, request.getMobile());
+				ps.setString(6, request.getLocation());
+				ps.setInt(7, request.getExperience());
+				ps.setString(8, request.getSkills());
+				ps.setString(9, request.getIndustry());
 				ps.setCharacterStream(10,fr,(int)f.length());
 				int rtncode = ps.executeUpdate();
 				logger.info("after insertion rtncode : "+rtncode);

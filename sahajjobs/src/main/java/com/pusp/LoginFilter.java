@@ -13,6 +13,7 @@ import javax.servlet.ServletResponse;
 
 import com.pusp.dao.LoginServiceI;
 import com.pusp.dao.LoginServiceIImpl;
+import com.pusp.dto.LoginRequest;
 
 /**
  * Servlet Filter implementation class LoginFilter
@@ -38,11 +39,12 @@ public class LoginFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		boolean loginFlag = false;
-		String uname = request.getParameter("uname");
-		String pass = request.getParameter("pass");
+		LoginRequest loginRequest = new LoginRequest();
+		loginRequest.setPassword(request.getParameter("pass"));
+		loginRequest.setUser(request.getParameter("uname"));
 		try {
 			LoginServiceI loginService = new LoginServiceIImpl();
-			loginFlag = loginService.validateUser(uname, pass);
+			loginFlag = loginService.validateUser(loginRequest);
 			if(loginFlag == true){
 				chain.doFilter(request, response);
 			}
