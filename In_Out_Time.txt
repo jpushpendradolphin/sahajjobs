@@ -1,0 +1,30 @@
+mon : 
+tue :
+wed : out 8:20 Pm
+thu : in 2:30 Pm
+
+
+24/07/17
+mon : in ----> 10: 50 Am
+	  out ----> 8: 15
+tue : in --> 11:10
+      out --> 8:20
+wed : in ---> 11 : 15
+      out --> 8:20
+thu : in ---> 11:20
+      out : -- > 8: 30
+
+	  
+31/07/17
+mon : in : 11:15 AM
+		out : 20 : 50 PM
+Tue : in 11: 10 Am
+out  8:20 PM
+
+wed in time : 11:20 Am
+out : 9:15
+Thu : in 11:10
+out :9:30
+
+roticenterinkukatpally
+roti@kukatpally
