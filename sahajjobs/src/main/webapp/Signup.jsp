@@ -21,7 +21,7 @@ Signup Page
 
 <article style = "text-align : center">
   <h1>Welcome To Signup Page</h1>
-  <form action = "signup" name = "signUpForm" onsubmit="return validateForm()">
+  <form action = "signup" method = "post" name = "signUpForm">
   <table align = "center">
   <tr>
   <td>FirstName</td>
@@ -89,8 +89,8 @@ Signup Page
   </td>
   </tr>
   <tr>
-  <td>Upload Resume</td>
-  <td><input type = "file" value = "Upload Resume"/></td>
+  <!-- <td>Upload Resume</td>
+  <td><input type = "file" value = "Upload Resume"/></td> -->
   </tr>
   <tr>
   <td><input type = "submit" value = "Login"/></td>

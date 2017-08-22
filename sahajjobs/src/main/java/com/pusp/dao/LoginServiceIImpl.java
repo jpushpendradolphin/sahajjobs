@@ -53,7 +53,6 @@ public class LoginServiceIImpl implements LoginServiceI {
 	private PersistUserDto persistUser(SignUpRequestDto request)throws Exception {
 		conn = LogginConnection.getLoginConnection();
 		PersistUserDto dto = new PersistUserDto();
-		DatabaseMetaData md = conn.getMetaData();
 		String tableName = request.getfName()+""+request.getlName();
 			int returnCode = -1;
 			String query = "create table "+ tableName+"(fName varchar2(30), lName varchar2(30), pass varchar2(30), email varchar2(30),mob number(10), loc varchar2(30),t_Exp number(2),skills varchar2(30),industry varchar2(30),resume clob)";

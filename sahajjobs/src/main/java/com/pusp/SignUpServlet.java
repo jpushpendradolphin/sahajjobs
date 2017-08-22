@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
+import com.pusp.dao.LoginServiceI;
+import com.pusp.dao.LoginServiceIImpl;
 import com.pusp.dto.SignUpRequestDto;
 
 /**
@@ -27,8 +28,8 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String filePath = "resources";
-		MultipartRequest m = new MultipartRequest(request,"d:/new");  
+		String filePath = "C:/Users/admin/Desktop/jobs/sahajjobs/src/main/resources";
+		/*MultipartRequest m = new MultipartRequest(request,filePath);*/  
 
 		SignUpRequestDto requestDto = new SignUpRequestDto();
 		
@@ -36,12 +37,20 @@ public class SignUpServlet extends HttpServlet {
 		requestDto.setlName(request.getParameter("lName"));
 		requestDto.setPass(request.getParameter("pass"));
 		requestDto.setEmail(request.getParameter("email"));
+		System.out.println("mobile"+request.getParameter("email"));
 		requestDto.setMobile(Long.parseLong(request.getParameter("mobile")));
 		requestDto.setLocation(request.getParameter("location"));
 		requestDto.setExperience(Integer.parseInt(request.getParameter("experience")));
 		requestDto.setSkills(request.getParameter("skills"));
 		requestDto.setIndustry(request.getParameter("industry"));
 		requestDto.setFilePath(filePath);
+		try {
+			LoginServiceI service = new LoginServiceIImpl();
+			service.saveUser(requestDto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
