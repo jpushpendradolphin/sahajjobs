@@ -1,14 +1,19 @@
 package com.pusp;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pusp.dao.LoginServiceI;
 import com.pusp.dao.LoginServiceIImpl;
 import com.pusp.dto.SignUpRequestDto;
+
 
 /**
  * Servlet implementation class SignUp
@@ -47,8 +52,15 @@ public class SignUpServlet extends HttpServlet {
 		try {
 			LoginServiceI service = new LoginServiceIImpl();
 			service.saveUser(requestDto);
+			request.setAttribute("user", requestDto.getfName());
+			request.setAttribute("signUpRequest", requestDto);
+			RequestDispatcher rd = request.getRequestDispatcher("/Profile.jsp");
+			
+			rd.forward(request, response);
+			System.out.println("SignUp Success");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			RequestDispatcher rd = request.getRequestDispatcher("SignUpError.jsp");
+			rd.forward(request, response);
 			e.printStackTrace();
 		}
 		

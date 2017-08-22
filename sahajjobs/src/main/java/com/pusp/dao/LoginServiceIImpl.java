@@ -54,15 +54,16 @@ public class LoginServiceIImpl implements LoginServiceI {
 		PersistUserDto dto = new PersistUserDto();
 		String tableName = request.getfName()+""+request.getlName();
 			int returnCode = -1;
-			String query = "create table "+ tableName+"(fName varchar2(30), lName varchar2(30), pass varchar2(30), email varchar2(30),mob number(10), loc varchar2(30),t_Exp number(2),skills varchar2(30),industry varchar2(30),resume clob)";
+			String query = "create table "+ tableName+"(fName varchar2(30), lName varchar2(30), pass varchar2(30), email varchar2(30),mob number(10), loc varchar2(30),t_Exp number(2),skills varchar2(30),industry varchar2(30))";
 			try{
 				
-				File f = new File(request.getFilePath());  
-				FileReader fr = new FileReader(f);
+				/*File f = new File(request.getFilePath());  
+				FileReader fr = new FileReader(f);*/
 				Statement st = conn.createStatement();
 				returnCode = st.executeUpdate(query);
-				logger.info("returncode "+returnCode);
-				PreparedStatement ps = conn.prepareStatement("");
+				
+				logger.info("returncode "+returnCode+"table created successfully");
+				PreparedStatement ps = conn.prepareStatement("insert into "+tableName +" values (?,?,?,?,?,?,?,?,?)");
 				ps.setString(1, request.getfName());
 				ps.setString(2, request.getlName());
 				ps.setString(3, request.getPass());
@@ -72,7 +73,7 @@ public class LoginServiceIImpl implements LoginServiceI {
 				ps.setInt(7, request.getExperience());
 				ps.setString(8, request.getSkills());
 				ps.setString(9, request.getIndustry());
-				ps.setCharacterStream(10,fr,(int)f.length());
+				//ps.setCharacterStream(10,fr,(int)f.length());
 				int rtncode = ps.executeUpdate();
 				logger.info("after insertion rtncode : "+rtncode);
 				if(rtncode >0)
