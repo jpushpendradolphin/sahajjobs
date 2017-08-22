@@ -94,7 +94,7 @@ Signup Page
   <td><input type = "file" value = "Upload Resume"/></td> -->
   </tr>
   <tr>
-  <td><input type = "submit" value = "Login"/></td>
+  <td><input type = "submit" value = "SignUp"/></td>
   </tr>
   </table>
   </form>

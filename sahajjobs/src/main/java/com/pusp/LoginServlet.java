@@ -26,7 +26,8 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("Welcome.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/Welcome.jsp");
 		rd.include(request, response);
 	}
 
