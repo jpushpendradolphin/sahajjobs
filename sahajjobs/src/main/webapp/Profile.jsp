@@ -14,8 +14,7 @@ Profile Page
   
 <nav>
   <ul>
-    <li><a href="Login.jsp">Login</a></li>
-    <li><a href="Signup.jsp">SignUp</a></li>
+  	<li><a href="Home.jsp">Home</a></li>
     <li><a href="Contact.jsp">Contact Us</a></li>
     <li><a href="Logout.jsp">Logout</a></li>
   </ul>
@@ -30,31 +29,36 @@ Profile Page
   	You Are Registered with the Following Details</h1>
   	<table align = "center">
   	<tr>
+  	<td>User Name</td>
+  	<td><%= requestDto.getfName()+""+requestDto.getlName()%></td>
+  	</tr>
+  	<tr>
+  	<tr>
   	<td>First Name</td>
   	<td><%= requestDto.getfName()%></td>
   	</tr>
   	<tr>
-  	<td>First Name</td>
+  	<td>lastName Name</td>
   	<td><%= requestDto.getlName()%></td>
   	</tr>
   	<tr>
-  	<td>First Name</td>
+  	<td>Email</td>
   	<td><%= requestDto.getEmail()%></td>
   	</tr>
   	<tr>
-  	<td>First Name</td>
+  	<td>Mobile No.</td>
   	<td><%= requestDto.getMobile()%></td>
   	</tr>
   	<tr>
-  	<td>First Name</td>
+  	<td>Location</td>
   	<td><%= requestDto.getLocation()%></td>
   	</tr>
   	<tr>
-  	<td>First Name</td>
+  	<td>Industry</td>
   	<td><%= requestDto.getIndustry()%></td>
   	</tr>
   	<tr>
-  	<td>First Name</td>
+  	<td>Skills</td>
   	<td><%= requestDto.getSkills()%></td>
   	</tr>
   	</table>

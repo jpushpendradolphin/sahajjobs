@@ -16,7 +16,6 @@ Home Page
     <li><a href="Login.jsp">Login</a></li>
     <li><a href="Signup.jsp">SignUp</a></li>
     <li><a href="Contact.jsp">Contact Us</a></li>
-    <li><a href="Logout.jsp">Logout</a></li>
   </ul>
 </nav>
 

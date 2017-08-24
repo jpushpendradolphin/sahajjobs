@@ -21,7 +21,7 @@ Signup Page
 
 <article style = "text-align : center">
   <h1>Welcome To Signup Page</h1>
-  <form action = "signup" method = "post" name = "signUpForm">
+  <form action = "signup" method = "post" name = "signUpForm" onsubmit="return validateSignUpForm()">
   <table align = "center">
   <tr>
   <td>FirstName</td>

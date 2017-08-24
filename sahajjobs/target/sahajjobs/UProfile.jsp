@@ -16,6 +16,7 @@ Hello Mr. <%= loggedInUser %>
   
 <nav>
   <ul>
+  	<li><a href="Home.jsp">Home</a></li>
     <li><a href="Contact.jsp">Contact Us</a></li>
     <li><a href="Logout.jsp">Logout</a></li>
   </ul>
@@ -28,7 +29,7 @@ Hello Mr. <%= loggedInUser %>
 	<%if(userResponse != null)
 		out.println();
 	%>
-  	<h1>Your Details are</h1>
+  	<h1 align = "center">Your Details are</h1>
   	<table align = "center">
   	<tr>
   	<td>First Name</td>
@@ -57,6 +58,10 @@ Hello Mr. <%= loggedInUser %>
   	<tr>
   	<td>Skills</td>
   	<td><%= userResponse.getSkills()%></td>
+  	</tr>
+  	<tr>
+  	<td>Experience</td>
+  	<td><%= userResponse.getExperience()%></td>
   	</tr>
   	</table>
 </article>
