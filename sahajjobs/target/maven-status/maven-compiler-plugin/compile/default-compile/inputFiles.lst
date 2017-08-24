@@ -3,8 +3,10 @@ C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\dao\LoginServiceIIm
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\dao\LoginServiceI.java
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\dto\LoginRequest.java
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\dto\SignUpRequestDto.java
+C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\dto\UserDetailsResponse.java
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\test\TestLoginServiceApp.java
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\LoginFilter.java
+C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\ProfileServlet.java
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\db\LogginConnection.java
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\SignUpServlet.java
 C:\Users\admin\Desktop\jobs\sahajjobs\src\main\java\com\pusp\dto\PersistUserDto.java

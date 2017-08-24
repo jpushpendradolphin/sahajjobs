@@ -15,9 +15,10 @@ public class TestLoginServiceApp {
 		LogginConnection conn = new LogginConnection();
 		System.out.println("conn :"+conn);
 		LoginServiceI service = new LoginServiceIImpl();
-		PersistUserDto msg = service.saveUser(request);
+		/*PersistUserDto msg = service.saveUser(request);
 		System.out.println("msg :"+msg.getErrorMessage());
-
+		 */
+		service.getUserDetails("PP");
 	}
 
 }

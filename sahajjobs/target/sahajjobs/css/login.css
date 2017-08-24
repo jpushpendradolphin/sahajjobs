@@ -34,3 +34,27 @@ article {
     padding: 1em;
     overflow: hidden;
 }
+
+table,th,td
+	{
+		border:1px solid   #f2e6ff;
+	}
+	table
+	{
+		border-collapse:collapse;
+		width:50%;
+	}
+	td
+	{
+		height:40px;
+	}
+	tr
+	{
+		background-color:#ccffcc;
+		color:black;
+	}
+	th
+	{
+		background-color:yellow;
+		color:black;
+	}

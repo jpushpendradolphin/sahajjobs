@@ -1,7 +1,5 @@
 package com.pusp.dao;
 
-import java.io.File;
-import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +12,7 @@ import com.pusp.db.LogginConnection;
 import com.pusp.dto.LoginRequest;
 import com.pusp.dto.PersistUserDto;
 import com.pusp.dto.SignUpRequestDto;
+import com.pusp.dto.UserDetailsResponse;
 
 public class LoginServiceIImpl implements LoginServiceI {
 	final static Logger logger = Logger.getLogger(LoginServiceIImpl.class);
@@ -36,6 +35,7 @@ public class LoginServiceIImpl implements LoginServiceI {
 		return persistUserDto;
 	}
 	
+	
 	private boolean getLoginStatus(LoginRequest request) throws SQLException{
 		boolean msg = false;
 		conn  = LogginConnection.getLoginConnection();
@@ -47,7 +47,12 @@ public class LoginServiceIImpl implements LoginServiceI {
 			msg = true;
 		return msg;
 	}
-	
+	public UserDetailsResponse getUserDetails(String userName) {
+		UserDetailsResponse userDetailsResponse = fetchUserDetails(userName);
+		if(userDetailsResponse != null)
+			userDetailsResponse.setSuccessMsg("Suucess");
+		return userDetailsResponse;
+	}
 	
 	private PersistUserDto persistUser(SignUpRequestDto request)throws Exception {
 		conn = LogginConnection.getLoginConnection();
@@ -86,6 +91,31 @@ public class LoginServiceIImpl implements LoginServiceI {
 			}
 			
 		return dto; 
+	}
+	
+	public UserDetailsResponse fetchUserDetails(String userName) {
+		UserDetailsResponse userDetailsResponse = null;
+		String query = "select * from "+userName +"";
+		Connection conn = LogginConnection.getLoginConnection();
+		try {
+			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				userDetailsResponse = new UserDetailsResponse();
+				userDetailsResponse.setfName(rs.getString(1));
+				userDetailsResponse.setlName(rs.getString(2));
+				userDetailsResponse.setEmail(rs.getString(4));
+				userDetailsResponse.setMobileNo(rs.getLong(5));
+				userDetailsResponse.setLoc(rs.getString(6));
+				userDetailsResponse.setExperience(rs.getInt(7));
+				userDetailsResponse.setSkills(rs.getString(8));
+				userDetailsResponse.setIndustry(rs.getString(9));
+			}
+		} catch (SQLException e) {
+			logger.error("Error in LoginServiceIImpl.fetchUserDetails"+e.getMessage());
+			e.printStackTrace();
+		}
+		return userDetailsResponse;
 	}
 
 }

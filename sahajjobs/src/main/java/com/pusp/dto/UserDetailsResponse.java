@@ -9,6 +9,8 @@ public class UserDetailsResponse {
 	private String industry;
 	private long mobileNo;
 	private int experience;
+	private String successMsg;
+	private String errorMsg;
 	public String getfName() {
 		return fName;
 	}
@@ -56,6 +58,18 @@ public class UserDetailsResponse {
 	}
 	public void setExperience(int experience) {
 		this.experience = experience;
+	}
+	public String getSuccessMsg() {
+		return successMsg;
+	}
+	public void setSuccessMsg(String successMsg) {
+		this.successMsg = successMsg;
+	}
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
 	}
 	
 

@@ -26,12 +26,36 @@ Profile Page
 	String user =(String)request.getAttribute("user");  
 	SignUpRequestDto requestDto = (SignUpRequestDto)request.getAttribute("signUpRequest");
 	%> 
-  <h1 style = "color : green; text-align : center">Hello Mr <%= user %></h1>
-  	You Are Registered with Following Details
-  	<table>
+  <h1 style = "color : green; text-align : center">Hello Mr. <%= user %>
+  	You Are Registered with the Following Details</h1>
+  	<table align = "center">
   	<tr>
   	<td>First Name</td>
   	<td><%= requestDto.getfName()%></td>
+  	</tr>
+  	<tr>
+  	<td>First Name</td>
+  	<td><%= requestDto.getlName()%></td>
+  	</tr>
+  	<tr>
+  	<td>First Name</td>
+  	<td><%= requestDto.getEmail()%></td>
+  	</tr>
+  	<tr>
+  	<td>First Name</td>
+  	<td><%= requestDto.getMobile()%></td>
+  	</tr>
+  	<tr>
+  	<td>First Name</td>
+  	<td><%= requestDto.getLocation()%></td>
+  	</tr>
+  	<tr>
+  	<td>First Name</td>
+  	<td><%= requestDto.getIndustry()%></td>
+  	</tr>
+  	<tr>
+  	<td>First Name</td>
+  	<td><%= requestDto.getSkills()%></td>
   	</tr>
   	</table>
 </article>

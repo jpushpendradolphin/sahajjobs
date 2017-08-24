@@ -13,9 +13,7 @@ Welcome Page
   
 <nav>
   <ul>
-    <li><a href="Login.jsp">Login</a></li>
     <li><a href="Logout.jsp">Logout</a></li>
-    <li><a href="#">SignUp</a></li>
     <li><a href="Contact.jsp">Contact Us</a></li>
   </ul>
 </nav>
